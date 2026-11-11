@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071522">
+    <meta
+      name="description"
+      content="JobTrack Pro organiza tus postulaciones, entrevistas, notas y próximos pasos en un solo lugar."
+    >
+    <title>JobTrack Pro | Tu búsqueda, en orden</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230d2535'/%3E%3Cpath d='M18 45V19h8v19h20v7z' fill='%233ee2d0'/%3E%3Cpath d='M31 19h15v8H31z' fill='%233ea8ff'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" type="module"></script>
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="JobTrack Pro, inicio">
+        <span class="brand-mark" aria-hidden="true"><span></span><i></i></span>
+        <span class="brand-name">JobTrack<span>Pro</span></span>
+      </a>
+      <div class="topbar-actions">
+        <span id="user-email" class="user-email" hidden></span>
+        <button id="login-button" class="button button-quiet" type="button">Iniciar sesión</button>
+        <button id="logout-button" class="button button-quiet" type="button" hidden>Cerrar sesión</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="landing" class="landing page-width">
+        <div class="landing-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> TU PRÓXIMO PASO EMPIEZA AQUÍ</p>
+          <h1>Tu búsqueda de empleo,<br><span>en orden.</span></h1>
+          <p class="landing-description">
+            Organiza cada postulación, prepárate para tus entrevistas y no pierdas de vista ningún seguimiento.
+          </p>
+          <div class="landing-actions">
+            <button id="demo-button" class="button button-primary" type="button">
+              Explorar demo <span aria-hidden="true">→</span>
+            </button>
+            <button id="create-account-button" class="button button-outline" type="button">
+              Crear cuenta
+            </button>
+          </div>
+          <div class="privacy-note">
+            <span class="lock-icon" aria-hidden="true">◇</span>
+            <span>Demo con datos ficticios. Tus postulaciones privadas solo las ves tú.</span>
+          </div>
+        </div>
+
+        <div class="landing-preview" aria-label="Vista previa del panel de postulaciones">
+          <div class="preview-glow"></div>
+          <div class="preview-window">
+            <div class="preview-head">
+              <div>
+                <span class="preview-kicker">VISTA GENERAL</span>
+                <h2>Tu búsqueda</h2>
+              </div>
+              <span class="preview-period">Este mes <span aria-hidden="true">⌄</span></span>
+            </div>
+            <div class="preview-stats">
+              <div class="preview-stat"><span>Postulaciones</span><strong>12</strong><small>+3 esta semana</small></div>
+              <div class="preview-stat"><span>Entrevistas</span><strong>04</strong><small>Próxima: mañana</small></div>
+            </div>
+            <div class="preview-chart" aria-hidden="true">
+              <div class="chart-lines"><i></i><i></i><i></i></div>
+              <svg viewBox="0 0 450 130" role="img" aria-label="Tendencia de postulaciones">
+                <defs>
+                  <linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0" stop-color="#36d9c7" stop-opacity=".25"></stop>
+                    <stop offset="1" stop-color="#36d9c7" stop-opacity="0"></stop>
+                  </linearGradient>
+                </defs>
+                <path d="M0 104 C42 94 48 78 90 84 S148 103 184 69 S245 85 276 52 S340 69 370 39 S420 46 450 17 V130 H0Z" fill="url(#chart-fill)"></path>
+                <path d="M0 104 C42 94 48 78 90 84 S148 103 184 69 S245 85 276 52 S340 69 370 39 S420 46 450 17" fill="none" stroke="#38dfce" stroke-linecap="round" stroke-width="3"></path>
+                <circle cx="370" cy="39" r="5" fill="#071522" stroke="#38dfce" stroke-width="3"></circle>
+              </svg>
+              <div class="chart-labels"><span>01</span><span>07</span><span>14</span><span>21</span><span>HOY</span></div>
+            </div>
+            <div class="preview-application">
+              <span class="company-icon company-blue">N</span>
+              <span class="preview-company"><strong>NovaTech</strong><small>Product Designer</small></span>
+              <span class="status-pill status-interview">Entrevista</span>
+            </div>
+            <div class="preview-application">
+              <span class="company-icon company-purple">A</span>
+              <span class="preview-company"><strong>Atlas Studio</strong><small>Diseñador UX/UI</small></span>
+              <span class="status-pill status-applied">Aplicado</span>
+            </div>
+          </div>
+          <div class="floating-note"><span>✦</span> Un paso a la vez. Vas avanzando.</div>
+        </div>
+      </section>
+
+      <section class="feature-strip page-width" aria-label="Funciones principales">
+        <article class="feature-item">
+          <span class="feature-icon icon-cyan" aria-hidden="true">↗</span>
+          <div><h2>Todo en un lugar</h2><p>Empresas, cargos y estados sin hojas dispersas.</p></div>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon icon-blue" aria-hidden="true">◷</span>
+          <div><h2>Seguimientos a tiempo</h2><p>Notas y recordatorios para tu próximo paso.</p></div>
+        </article>
+        <article class="feature-item">
+          <span class="feature-icon icon-violet" aria-hidden="true">⌑</span>
+          <div><h2>Privado por diseño</h2><p>Tu cuenta mantiene tus datos separados.</p></div>
+        </article>
+      </section>
+
+      <section id="workspace" class="workspace page-width" hidden>
+        <div class="workspace-heading">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-dot"></span><span id="workspace-kicker">MODO DEMO</span></p>
+            <h1>Tu búsqueda de empleo</h1>
+            <p id="workspace-subtitle" class="workspace-subtitle">Un vistazo claro a cada oportunidad.</p>
+          </div>
+          <div class="workspace-heading-actions">
+            <span id="demo-badge" class="demo-badge">DEMO · NO SE GUARDA</span>
+            <button id="new-application-button" class="button button-primary" type="button">
+              <span aria-hidden="true">＋</span> Nueva postulación
+            </button>
+          </div>
+        </div>
+
+        <div id="demo-notice" class="demo-notice">
+          <span aria-hidden="true">ⓘ</span>
+          Estás explorando datos de ejemplo. Puedes probar las acciones; los cambios desaparecen al salir de la demo.
+          <button id="exit-demo-button" type="button">Salir de la demo</button>
+        </div>
+
+        <section class="metric-grid" aria-label="Resumen de postulaciones">
+          <article class="metric-card metric-total">
+            <span class="metric-label">Total postulaciones</span>
+            <strong id="metric-total">0</strong>
+            <span class="metric-caption"><span class="metric-dot"></span> En seguimiento</span>
+            <span class="metric-watermark" aria-hidden="true">↗</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Aplicadas</span>
+            <strong id="metric-applied">0</strong>
+            <span class="metric-caption">Esperando respuesta</span>
+            <span class="metric-mini-icon mini-cyan" aria-hidden="true">↗</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Entrevistas</span>
+            <strong id="metric-interviews">0</strong>
+            <span class="metric-caption">Oportunidades activas</span>
+            <span class="metric-mini-icon mini-blue" aria-hidden="true">◷</span>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Ofertas</span>
+            <strong id="metric-offers">0</strong>
+            <span class="metric-caption">¡Un gran paso!</span>
+            <span class="metric-mini-icon mini-violet" aria-hidden="true">✦</span>
+          </article>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="panel applications-panel">
+            <div class="panel-heading">
+              <div><h2>Postulaciones</h2><p>Administra las oportunidades que te interesan.</p></div>
+              <span id="application-count" class="count-badge">0</span>
+            </div>
+            <div class="list-controls">
+              <label class="search-box">
+                <span aria-hidden="true">⌕</span>
+                <input id="search-input" type="search" placeholder="Buscar empresa o cargo" autocomplete="off">
+              </label>
+              <label class="filter-select">
+                <span class="sr-only">Filtrar por estado</span>
+                <select id="status-filter">
+                  <option value="">Todos los estados</option>
+                  <option>Aplicado</option><option>Entrevista</option><option>Oferta</option>
+                  <option>En espera</option><option>Rechazado</option>
+                </select>
+              </label>
+            </div>
+            <div class="application-table-wrap">
+              <table class="application-table">
+                <thead><tr><th>EMPRESA / CARGO</th><th>ESTADO</th><th>FECHA</th><th><span class="sr-only">Acciones</span></th></tr></thead>
+                <tbody id="application-list"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state" hidden>
+                <span aria-hidden="true">⌕</span><strong>No encontramos postulaciones</strong>
+                <p>Prueba otra búsqueda o agrega una nueva oportunidad.</p>
+              </div>
+            </div>
+          </section>
+
+          <aside class="panel reminders-panel">
+            <div class="panel-heading">
+              <div><h2>Próximos pasos</h2><p>Recordatorios para mantener el ritmo.</p></div>
+              <button id="new-reminder-button" class="icon-button" type="button" aria-label="Agregar recordatorio">＋</button>
+            </div>
+            <div id="reminder-list" class="reminder-list"></div>
+            <button id="all-reminders-button" class="text-button" type="button">Ver todos los recordatorios <span aria-hidden="true">→</span></button>
+          </aside>
+        </div>
+        <p id="workspace-error" class="workspace-error" role="alert" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width">
+      <a class="brand brand-small" href="/" aria-label="JobTrack Pro, inicio">
+        <span class="brand-mark" aria-hidden="true"><span></span><i></i></span>
+        <span class="brand-name">JobTrack<span>Pro</span></span>
+      </a>
+      <p>Hecho para que cada paso cuente.</p>
+      <span>© <span id="year"></span> JobTrack Pro</span>
+    </footer>
+
+    <dialog id="auth-dialog" class="modal modal-auth">
+      <form method="dialog"><button class="modal-close" aria-label="Cerrar" value="close">×</button></form>
+      <div class="modal-heading">
+        <span class="modal-mark"><span class="brand-mark" aria-hidden="true"><span></span><i></i></span></span>
+        <p class="eyebrow"><span class="eyebrow-dot"></span> TU ESPACIO PERSONAL</p>
+        <h2 id="auth-title">Bienvenido de nuevo</h2>
+        <p id="auth-description">Inicia sesión para continuar con tu búsqueda.</p>
+      </div>
+      <div class="auth-switch" role="tablist" aria-label="Acceso a tu cuenta">
+        <button id="login-tab" class="auth-tab active" type="button" role="tab" aria-selected="true">Iniciar sesión</button>
+        <button id="register-tab" class="auth-tab" type="button" role="tab" aria-selected="false">Crear cuenta</button>
+      </div>
+      <form id="auth-form" class="form-stack">
+        <label class="field-label">Correo electrónico
+          <input id="auth-email" name="email" type="email" required maxlength="254" autocomplete="email" placeholder="tu@correo.com">
+        </label>
+        <label class="field-label">Contraseña
+          <input id="auth-password" name="password" type="password" required minlength="12" maxlength="128" autocomplete="current-password" placeholder="Mínimo 12 caracteres">
+        </label>
+        <p id="auth-message" class="form-message" role="alert" hidden></p>
+        <button id="auth-submit" class="button button-primary button-full" type="submit">Iniciar sesión <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="auth-footnote">Al crear una cuenta, tus datos se guardan en privado y no aparecen en la demo pública. Esta versión no ofrece verificación ni recuperación de correo.</p>
+    </dialog>
+
+    <dialog id="application-dialog" class="modal modal-wide">
+      <form method="dialog"><button class="modal-close" aria-label="Cerrar" value="close">×</button></form>
+      <div class="modal-heading modal-heading-left">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> OPORTUNIDAD</p>
+        <h2 id="application-title">Nueva postulación</h2>
+        <p>Guarda los datos importantes para dar seguimiento.</p>
+      </div>
+      <form id="application-form" class="form-grid">
+        <input id="application-id" type="hidden">
+        <label class="field-label">Empresa *
+          <input id="company-input" required maxlength="120" placeholder="Ej. NovaTech">
+        </label>
+        <label class="field-label">Cargo *
+          <input id="position-input" required maxlength="120" placeholder="Ej. Diseñador de producto">
+        </label>
+        <label class="field-label">Estado
+          <select id="application-status">
+            <option>Aplicado</option><option>Entrevista</option><option>Oferta</option>
+            <option>En espera</option><option>Rechazado</option>
+          </select>
+        </label>
+        <label class="field-label">Fecha de postulación
+          <input id="applied-on-input" type="date" required>
+        </label>
+        <label class="field-label">Ubicación
+          <input id="location-input" maxlength="120" placeholder="Ciudad o remoto">
+        </label>
+        <label class="field-label">Modalidad
+          <select id="work-type-input">
+            <option value="">Selecciona una opción</option><option>Remoto</option><option>Híbrido</option><option>Presencial</option>
+          </select>
+        </label>
+        <label class="field-label">Salario (opcional)
+          <input id="salary-input" maxlength="100" placeholder="Ej. $1.500 - $2.000">
+        </label>
+        <label class="field-label">Enlace de la oferta
+          <input id="url-input" type="url" maxlength="500" placeholder="https://">
+        </label>
+        <p id="application-message" class="form-message form-grid-full" role="alert" hidden></p>
+        <div class="form-actions form-grid-full">
+          <button class="button button-outline" type="button" data-close-dialog="application-dialog">Cancelar</button>
+          <button id="application-submit" class="button button-primary" type="submit">Guardar postulación</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="detail-dialog" class="modal modal-wide">
+      <form method="dialog"><button class="modal-close" aria-label="Cerrar" value="close">×</button></form>
+      <div id="detail-content"></div>
+    </dialog>
+
+    <dialog id="reminder-dialog" class="modal">
+      <form method="dialog"><button class="modal-close" aria-label="Cerrar" value="close">×</button></form>
+      <div class="modal-heading modal-heading-left">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> MANTÉN EL IMPULSO</p>
+        <h2>Nuevo recordatorio</h2>
+        <p>Agenda el siguiente paso de tu búsqueda.</p>
+      </div>
+      <form id="reminder-form" class="form-stack">
+        <label class="field-label">¿Qué necesitas hacer?
+          <input id="reminder-title-input" required maxlength="160" placeholder="Ej. Enviar correo de seguimiento">
+        </label>
+        <label class="field-label">Fecha y hora
+          <input id="reminder-date-input" type="datetime-local" required>
+        </label>
+        <label class="field-label">Postulación relacionada
+          <select id="reminder-application-input"><option value="">Ninguna</option></select>
+        </label>
+        <p id="reminder-message" class="form-message" role="alert" hidden></p>
+        <div class="form-actions">
+          <button class="button button-outline" type="button" data-close-dialog="reminder-dialog">Cancelar</button>
+          <button class="button button-primary" type="submit">Crear recordatorio</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

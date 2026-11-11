@@ -1,0 +1,9 @@
+name = "jobtrack-pro"
+pages_build_output_dir = "./public"
+compatibility_date = "2026-11-11"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jobtrack-pro"
+database_id = "ff97a10d-a810-4e9d-893f-82262ac88a18"
+migrations_dir = "migrations"
