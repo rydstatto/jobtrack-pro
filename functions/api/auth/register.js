@@ -4,6 +4,7 @@ import {
   HttpError,
   id,
   json,
+  limitRegistration,
   readJson,
   requireSameOrigin,
   runApi,
@@ -20,6 +21,7 @@ export function onRequestPost(context) {
     const email = validateEmail(body?.email);
     const password = validatePassword(body?.password);
     const database = getDatabase(env);
+    await limitRegistration(request, env);
     const userId = id();
     const salt = crypto.getRandomValues(new Uint8Array(16));
     const saltEncoded = btoa(String.fromCharCode(...salt))

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   derivePassword,
+  limitRegistration,
   passwordMatches,
   requireSameOrigin,
   validateApplication,
@@ -93,4 +94,32 @@ test("rejects state-changing requests without an exact same-site origin", () => 
     method: "POST",
     headers: { Origin: "https://attacker.test" },
   })), { status: 403 });
+});
+
+test("stops registration when the IP-based account limit is reached", async () => {
+  const calls = [];
+  const database = {
+    prepare(sql) {
+      const statement = {
+        bind(...values) {
+          calls.push({ sql, values });
+          return statement;
+        },
+        async first() {
+          return { attempts: 3 };
+        },
+      };
+      return statement;
+    },
+  };
+  await assert.rejects(
+    limitRegistration(
+      new Request("https://jobtrack.test/api/auth/register", {
+        headers: { "CF-Connecting-IP": "192.0.2.10" },
+      }),
+      { DB: database },
+    ),
+    { status: 429 },
+  );
+  assert.equal(calls.length, 1);
 });

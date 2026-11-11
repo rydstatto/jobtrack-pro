@@ -1,6 +1,6 @@
 const SESSION_COOKIE = "jobtrack_session";
 const SESSION_SECONDS = 60 * 60 * 24 * 14;
-const PASSWORD_ITERATIONS = 310000;
+const PASSWORD_ITERATIONS = 100000;
 const APPLICATION_STATUSES = ["Aplicado", "Entrevista", "Oferta", "Rechazado", "En espera"];
 
 export class HttpError extends Error {
@@ -106,6 +106,37 @@ export async function derivePassword(password, salt) {
     256,
   );
   return encodeBase64Url(new Uint8Array(bits));
+}
+
+export async function limitRegistration(request, env) {
+  const ipAddress = request.headers.get("CF-Connecting-IP") || "unknown";
+  const key = await sha256(`register\n${ipAddress}`);
+  const now = new Date();
+  const windowStartedAt = new Date(now.getTime() - 60 * 60 * 1000).toISOString();
+  const database = getDatabase(env);
+  const record = await database
+    .prepare("SELECT attempts FROM login_attempts WHERE attempt_key = ? AND window_started_at > ?")
+    .bind(key, windowStartedAt)
+    .first();
+  if ((record?.attempts || 0) >= 3) {
+    throw new HttpError(429, "Se alcanzó el límite de creación de cuentas. Inténtalo más tarde.");
+  }
+  await database
+    .prepare(
+      `INSERT INTO login_attempts (attempt_key, attempts, window_started_at)
+       VALUES (?, 1, ?)
+       ON CONFLICT(attempt_key) DO UPDATE SET
+         attempts = CASE
+           WHEN login_attempts.window_started_at <= ? THEN 1
+           ELSE login_attempts.attempts + 1
+         END,
+         window_started_at = CASE
+           WHEN login_attempts.window_started_at <= ? THEN excluded.window_started_at
+           ELSE login_attempts.window_started_at
+         END`,
+    )
+    .bind(key, now.toISOString(), windowStartedAt, windowStartedAt)
+    .run();
 }
 
 export function validateEmail(value) {

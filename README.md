@@ -49,9 +49,10 @@ Ejecuta `npm test`.
 
 ## Seguridad y alcance
 
-- Las contraseñas se derivan con PBKDF2 y una sal única por cuenta; nunca se guardan en texto plano.
+- Las contraseñas se derivan con PBKDF2 (100.000 iteraciones, máximo soportado por Cloudflare Workers) y una sal única por cuenta; nunca se guardan en texto plano.
 - Las sesiones se generan aleatoriamente, expiran y se almacenan en la base como hash.
 - Las rutas de escritura requieren sesión y validan el origen de la solicitud.
+- El registro limita la creación de cuentas por dirección IP.
 - No se incluye restablecimiento de contraseña ni verificación de correo en esta versión.
 - La demo muestra únicamente datos inventados; no introduzcas datos personales allí.
 - Las cuentas son para la demostración del proyecto; revisa estas limitaciones antes de usarlo con información laboral sensible.
